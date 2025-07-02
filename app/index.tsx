@@ -1,11 +1,13 @@
-import { Text, View } from "react-native";
+import { CommonButton } from "@/components/CommonButton";
+import { useRouter } from "expo-router";
+import { View } from "react-native";
 
 export default function Index() {
+  const router = useRouter()
+
   return (
     <View className="flex-1 items-center justify-center bg-white">
-      <Text className="text-xl font-bold text-blue-500">
-        Welcome to TRIM_TIME!
-      </Text>
+      <CommonButton title="redirect to Home" onPress={() => router.replace('/home')} />
     </View>
   );
 }
