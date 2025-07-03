@@ -9,6 +9,7 @@ import { Controller, useForm } from "react-hook-form";
 import {
   Alert,
   Image,
+  KeyboardAvoidingView,
   ScrollView,
   Text,
   TouchableOpacity,
@@ -71,67 +72,72 @@ export default function SignUpPage() {
   };
   return (
     <SafeAreaView className="bg-background flex-1 px-6">
-      <ScrollView contentContainerStyle={{ height: "100%" }}>
-        <View className="flex justify-center items-center pb-24 my-auto">
-          <Image source={IMAGES.logo} style={{ height: 220, width: 220 }} />
-          <Text className="text-xl text-center text-primary font-bold">
-            Join TrimTime today
-          </Text>
-          <Text className="text-sm text-center text-primary-light font-bold mb-8">
-            Book smarter. Style faster. Look better.
-          </Text>
-          <View className="w-11/12">
-            <View className="w-full">
-              <Controller
-                control={control}
-                name="email"
-                render={({ field: { onChange, onBlur, value } }) => (
-                  <Input
-                    label="Email"
-                    value={value}
-                    onChangeText={onChange}
-                    onBlur={onBlur}
-                    error={errors.email?.message}
-                    keyboardType="email-address"
-                    className="mb-4"
-                  />
-                )}
-              />
+      <KeyboardAvoidingView behavior={"height"}>
+        <ScrollView contentContainerStyle={{ height: "100%" }}>
+          <View className="flex justify-center items-center pb-24 my-auto">
+            <Image source={IMAGES.logo} style={{ height: 220, width: 220 }} />
+            <Text className="text-xl text-center text-primary font-bold">
+              Join TrimTime today
+            </Text>
+            <Text className="text-sm text-center text-primary-light font-bold mb-8">
+              Book smarter. Style faster. Look better.
+            </Text>
+            <View className="w-11/12">
+              <View className="w-full">
+                <Controller
+                  control={control}
+                  name="email"
+                  render={({ field: { onChange, onBlur, value } }) => (
+                    <Input
+                      label="Email"
+                      value={value}
+                      onChangeText={onChange}
+                      onBlur={onBlur}
+                      error={errors.email?.message}
+                      keyboardType="email-address"
+                      className="mb-4"
+                    />
+                  )}
+                />
 
-              <Controller
-                control={control}
-                name="password"
-                render={({ field: { onChange, onBlur, value } }) => (
-                  <Input
-                    label="Password"
-                    value={value}
-                    onChangeText={onChange}
-                    onBlur={onBlur}
-                    error={errors.password?.message}
-                    keyboardType="default"
-                    secureTextEntry={true}
-                    className="mb-4"
-                  />
-                )}
-              />
-              <CommonButton title="Sign Up" onPress={handleSubmit(onSubmit)} />
-            </View>
-            <View className="flex justify-center items-center">
-              <TouchableOpacity
-                onPress={() => router.push("/sign-in")}
-                className="mt-4 flex-row justify-center items-center"
-              >
-                <Text className="text-text text-lg font-semibold">
-                  Already a User?{"   "}
-                  <Text className="font-semibold underline text-primary">
-                    Sign in
+                <Controller
+                  control={control}
+                  name="password"
+                  render={({ field: { onChange, onBlur, value } }) => (
+                    <Input
+                      label="Password"
+                      value={value}
+                      onChangeText={onChange}
+                      onBlur={onBlur}
+                      error={errors.password?.message}
+                      keyboardType="default"
+                      secureTextEntry={true}
+                      className="mb-4"
+                    />
+                  )}
+                />
+                <CommonButton
+                  title="Sign Up"
+                  onPress={handleSubmit(onSubmit)}
+                />
+              </View>
+              <View className="flex justify-center items-center">
+                <TouchableOpacity
+                  onPress={() => router.push("/sign-in")}
+                  className="mt-4 flex-row justify-center items-center"
+                >
+                  <Text className="text-text text-lg font-semibold">
+                    Already a User?{"   "}
+                    <Text className="font-semibold underline text-primary">
+                      Sign in
+                    </Text>
                   </Text>
-                </Text>
-              </TouchableOpacity>
+                </TouchableOpacity>
+              </View>
             </View>
           </View>
-        </View>
-      </ScrollView>
+        </ScrollView>
+      </KeyboardAvoidingView>
     </SafeAreaView>
   );
 }
