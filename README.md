@@ -1,50 +1,54 @@
-# Welcome to your Expo app 👋
+# 💇‍♀️ TrimTime – Salon Booking App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A sleek cross-platform salon booking app built with **React Native + Expo**, **Firebase** backend, and modern UI using **Tailwind (NativeWind)** and **Zustand**.
 
-## Get started
+Users can:
+- ✨ Sign up & Sign in via Email/Password
+- 💇‍♂️ Browse service providers (salons)
+- 📆 Pick a date & time slot
+- 📌 Book an appointment
+- 📖 View and cancel their bookings
 
-1. Install dependencies
+---
+
+## 🔧 Project Setup Instructions
+
+1. Clone the Repository
+
+   ```bash
+   git clone https://github.com/HardikPanchasaraZignuts/TrimTime
+   ```
+
+2. Install Dependencies
 
    ```bash
    npm install
    ```
 
-2. Start the app
-
+3. Run the App Locally
    ```bash
    npx expo start
    ```
 
-In the output, you'll find options to open the app in a
+4. set up your firebase through firebase Console
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+5. add .env file and set all variables from the firebase
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
 
-## Get a fresh project
+🔮 Tech Stack
+Expo (React Native)
 
-When you're ready, run:
+Firebase (Auth, Firestore)
 
-```bash
-npm run reset-project
-```
+Zustand for state management
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+React Hook Form + Zod
 
-## Learn more
+Tailwind CSS via NativeWind
 
-To learn more about developing your project with Expo, look at the following resources:
+Expo Router for navigation
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
 
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+🧑‍💻 Author
+Hardik Panchasara
+GitHub
