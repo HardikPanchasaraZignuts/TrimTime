@@ -35,20 +35,16 @@ Users can:
 5. add .env file and set all variables from the firebase
 
 
-🔮 Tech Stack
-Expo (React Native)
+------ 🔮 Tech Stack -----
 
-Firebase (Auth, Firestore)
-
-Zustand for state management
-
-React Hook Form + Zod
-
-Tailwind CSS via NativeWind
-
-Expo Router for navigation
+-Expo (React Native)
+-Firebase (Auth, Firestore)
+-Zustand for state management
+-React Hook Form + Zod
+-Tailwind CSS via NativeWind
+-Expo Router for navigation
 
 
 🧑‍💻 Author
 Hardik Panchasara
-GitHub
+[GitHub](https://github.com/HardikPanchasaraZignuts/TrimTime)
