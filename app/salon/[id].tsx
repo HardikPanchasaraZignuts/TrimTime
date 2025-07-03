@@ -17,6 +17,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import DatePickerComponent from "@/components/DatePickerComponent";
 import { useAuthStore } from "@/store/authStore";
+import { CommonButton } from "@/components/CommonButton";
 
 
 const SalonDetailsPage = () => {
@@ -26,6 +27,7 @@ const SalonDetailsPage = () => {
   const [selectedSlot, setSelectedSlot] = useState(null);
   const { user } = useAuthStore()
   const router = useRouter()
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const fetchProvider = async () => {
@@ -60,6 +62,7 @@ const SalonDetailsPage = () => {
 
   const handleBooking = async () => {
     if (!user || !provider) return;
+    setLoading(true)
     try {
       const bookingDate = date.toISOString().split("T")[0];
 
@@ -93,6 +96,8 @@ const SalonDetailsPage = () => {
     } catch (error) {
       console.error("Booking error:", error);
       alert("Booking failed. Try again.");
+    } finally {
+      setLoading(false)
     }
   };
 
@@ -113,7 +118,12 @@ const SalonDetailsPage = () => {
       ]}
       className="bg-background flex-1 px-6"
     >
-      <Ionicons name="arrow-back" size={20} color={COLORS.primary} onPress={() => router.back()} />
+      <Ionicons
+        name="arrow-back"
+        size={20}
+        color={COLORS.primary}
+        onPress={() => router.back()}
+      />
       <ScrollView className="h-full">
         <View className="flex-1 my-2 p-2">
           <Text className="text-xl text-primary mr-2 font-semibold">
@@ -177,13 +187,11 @@ const SalonDetailsPage = () => {
             ))}
           </View>
           {selectedSlot != null && (
-            <View className="flex-1">
-              <TouchableOpacity onPress={handleBooking}>
-                <Text className="text-center text-lg font-semibold bg-primary p-2 my-3 rounded-lg text-white">
-                  Book Slot
-                </Text>
-              </TouchableOpacity>
-            </View>
+            <CommonButton
+              title="Book Slot"
+              onPress={handleBooking}
+              loading={loading}
+            />
           )}
         </View>
       </ScrollView>
