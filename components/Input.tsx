@@ -1,4 +1,4 @@
-import { Text, TextInput, TextInputProps, View } from "react-native";
+import { Platform, Text, TextInput, TextInputProps, View } from "react-native";
 
 interface InputProps extends Partial<TextInputProps> {
   label: string;
@@ -25,7 +25,7 @@ export default function Input({
     <View className={className}>
       <Text className="text-primary mb-2">{label}</Text>
       <TextInput
-        className="h-10 border-2 border-primary text-primary font-medium rounded-lg px-2"
+        className="h-10 border-2 border-primary py-0 text-primary font-medium rounded-lg px-2"
         keyboardType={keyboardType}
         onChangeText={onChangeText}
         onBlur={onBlur}

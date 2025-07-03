@@ -1,5 +1,5 @@
 import { View, Text } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
 import { useAuthStore } from '@/store/authStore';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { CommonButton } from '@/components/CommonButton';
@@ -12,15 +12,20 @@ import COLORS from '@/constants/Colors';
 const ProfilePage = () => {
   const { user, setUser } = useAuthStore();
   const router = useRouter()
+    const [loading, setLoading] = useState(false);
 
   const handleLogout = async () => {
+    setLoading(true);
+
     try {
-      await signOut(auth)
+      await signOut(auth);
       setUser(null);
-      router.replace('/sign-in')
+      router.replace("/sign-in");
     } catch (error) {
       console.error("Logout failed:", error);
       alert("Failed to logout. Try again.");
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -36,6 +41,7 @@ const ProfilePage = () => {
             Email : {user?.email}
           </Text>
           <CommonButton
+            loading={loading}
             className="px-4"
             title="Logout"
             onPress={handleLogout}

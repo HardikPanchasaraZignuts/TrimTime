@@ -18,11 +18,13 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 import { z } from "zod";
 import Input from "../../components/Input";
+import { useState } from "react";
 
 type AuthFormData = z.infer<typeof authSchema>;
 
 export default function SignInPage() {
   const router = useRouter();
+  const [loading, setLoading] = useState(false);
 
   const {
     control,
@@ -37,6 +39,7 @@ export default function SignInPage() {
   });
 
   const onSubmit = async (data: AuthFormData) => {
+    setLoading(true);
     try {
       const userCredentials = await signInWithEmailAndPassword(
         auth,
@@ -69,13 +72,13 @@ export default function SignInPage() {
           [{ text: "OK" }]
         );
       }
+    } finally {
+      setLoading(false); 
     }
   };
   return (
     <SafeAreaView className="bg-background flex-1 px-6">
-      <KeyboardAvoidingView
-        behavior={"height"}
-      >
+      <KeyboardAvoidingView behavior={"height"}>
         <ScrollView contentContainerStyle={{ height: "100%" }}>
           <View className="flex justify-center items-center pb-24 my-auto">
             <Image
@@ -126,6 +129,7 @@ export default function SignInPage() {
                 <CommonButton
                   title="Sign In"
                   onPress={handleSubmit(onSubmit)}
+                  loading={loading}
                 />
               </View>
               <View className="flex justify-center items-center">

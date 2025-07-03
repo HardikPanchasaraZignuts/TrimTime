@@ -5,6 +5,7 @@ import { authSchema } from "@/schemas/auhSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "expo-router";
 import { createUserWithEmailAndPassword } from "firebase/auth";
+import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import {
   Alert,
@@ -23,6 +24,7 @@ type AuthFormData = z.infer<typeof authSchema>;
 
 export default function SignUpPage() {
   const router = useRouter();
+  const [loading, setLoading] = useState(false);
 
   const {
     control,
@@ -37,6 +39,7 @@ export default function SignUpPage() {
   });
 
   const onSubmit = async (data: AuthFormData) => {
+    setLoading(true);
     try {
       const usercredentials = await createUserWithEmailAndPassword(
         auth,
@@ -68,6 +71,8 @@ export default function SignUpPage() {
           [{ text: "OK" }]
         );
       }
+    } finally {
+      setLoading(false);
     }
   };
   return (
@@ -119,6 +124,7 @@ export default function SignUpPage() {
                 <CommonButton
                   title="Sign Up"
                   onPress={handleSubmit(onSubmit)}
+                  loading={loading}
                 />
               </View>
               <View className="flex justify-center items-center">

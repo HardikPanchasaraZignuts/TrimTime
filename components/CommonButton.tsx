@@ -6,18 +6,21 @@ interface CommonButtonProps extends TouchableOpacityProps {
   title: string;
   textClassName?: string;
   className?: string;
+  loading?: boolean;
 }
 
 export const CommonButton = ({
   title,
   onPress,
+  loading,
   className,
   textClassName,
   ...props
 }: CommonButtonProps) => {
   return (
     <TouchableOpacity
-      className={clsx("p-2 my-3 bg-primary rounded-lg", className)}
+      disabled={loading}
+      className={clsx("p-2 my-3 bg-primary rounded-lg", className, loading && "bg-primary-light")}
       onPress={onPress}
       {...props}
     >
@@ -27,7 +30,7 @@ export const CommonButton = ({
           textClassName
         )}
       >
-        {title}
+        {loading ? "wait..." : title}
       </Text>
     </TouchableOpacity>
   );

@@ -41,7 +41,7 @@ const DatePickerComponent = ({ date, setDate } : Props) => {
             value={date}
             onChange={onChange}
             minimumDate={new Date()}
-            maximumDate={new Date(new Date().setDate(new Date().getDate() + 7))}
+            // maximumDate={new Date(new Date().setDate(new Date().getDate() + 7))}
           />
         )}
         {Platform.OS === "ios" && (
@@ -53,7 +53,7 @@ const DatePickerComponent = ({ date, setDate } : Props) => {
             value={date}
             onChange={onChange}
             minimumDate={new Date()}
-            maximumDate={new Date(new Date().setDate(new Date().getDate() + 7))}
+            // maximumDate={new Date(new Date().setDate(new Date().getDate() + 7))}
           />
         )}
       </TouchableOpacity>
