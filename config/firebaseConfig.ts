@@ -19,40 +19,19 @@ const firebaseConfig = {
   measurementId: process.env.EXPO_PUBLIC_FIREBASE_MEASUREMENT_ID,
 };
 
-// Initialize Firebase app once
-const app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApp();
+let auth;
+let app;
 
-// Ensure Auth uses AsyncStorage for persistence
-const auth =
-  getApps().length === 0
-    ? initializeAuth(app, {
-        persistence: getReactNativePersistence(AsyncStorage),
-      })
-    : getAuth(app);
+if (getApps().length === 0) {
+  app = initializeApp(firebaseConfig);
+  auth = initializeAuth(app, {
+    persistence: getReactNativePersistence(AsyncStorage),
+  });
+} else {
+  app = getApp();
+  auth = getAuth(app);
+}
 
 const db = getFirestore(app);
 
 export { app, auth, db };
-
-
-// const app = getApps().length ? getApp() : initializeApp(firebaseConfig);
-
-// // initializeAuth only if it hasn't already been initialized
-// let auth;
-
-// if (getApps().length === 1 && !getAuth().currentUser) {
-//   try {
-//     auth = initializeAuth(app, {
-//       persistence: getReactNativePersistence(AsyncStorage),
-//     });
-//   } catch (e) {
-//     // already initialized (safe fallback)
-//     auth = getAuth(app);
-//   }
-// } else {
-//   auth = getAuth(app);
-// }
-
-// const db = getFirestore(app);
-
-// export { app, auth, db };

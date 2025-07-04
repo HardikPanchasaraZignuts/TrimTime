@@ -17,7 +17,8 @@
         "foregroundImage": "./assets/images/slon-logo.png",
         "backgroundColor": "#ffffff"
       },
-      "edgeToEdgeEnabled": true
+      "edgeToEdgeEnabled": true,
+      "package": "com.hardik246.TrimTime"
     },
     "web": {
       "bundler": "metro",
@@ -38,6 +39,12 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "180aa257-be49-47e6-8337-4c2ae6b5591f"
+      }
     }
   }
 }
