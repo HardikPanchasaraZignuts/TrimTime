@@ -30,7 +30,7 @@ Users can:
    npx expo start
    ```
 
-4. set up your firebase through firebase Console
+4. set up your firebase through firebase Console, set auth with email password and enable the firestore
 
 5. add .env file and set all variables from the firebase
 
